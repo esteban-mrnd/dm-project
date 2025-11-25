@@ -11,34 +11,27 @@ editor: visual
 
 **Link to our Github project :** https://github.com/esteban-mrnd/dm-project.git
 
-
-
 ### Links to the data sources
 
 All the following links include the filters we used to get the data for our analysis.
 
 rajouter les liens
 
+### Description of the sources (?)
 
+on peut réorganiser pour faire variable par variable ?
 
-### Short description of the project 
-
-
-
-
-
-
+### Short description of the project
 
 ### Data Description
-
 
 ```{r}
 library(vroom)
 library(here)
+library(dplyr)
+library
 here::i_am("dm-project.Rproj")
 ```
-
-
 
 ```{r}
 patents <- vroom(here("data","patents.csv"))
@@ -49,14 +42,28 @@ heat_stress <- vroom(here("data","heat_stress.csv"))
 wildfires <- vroom(here("data","wildfires.csv"))
 ```
 
+#### Description
+
+```{r}
+summarize_data <- function(df) {
+  df |> summarize(
+    `Number of lines` = n(),
+    `Number of columns` = ncol(df)
+  )
+}
+
+
+summarize_data(patents)
+
+```
 
 
 
+```{r}
+summarize_data(patents)
+summarize_data(patents)
 
-
-
-
-
+```
 
 
 
