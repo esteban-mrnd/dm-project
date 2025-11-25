@@ -83,8 +83,20 @@ df <- df_final|>
     values_from = OBS_VALUE
   )
 
+df|>
+  rename(
+   green_patents = `Technologies liées à l'environment` ,
+   total_patents = `Total des brevets`
+  )
 
-df_complete <- df 
+
+
+df_final |>
+  left_join(
+    gdp_regions |> select(REF_AREA, TIME_PERIOD, OBS_VALUE),
+    by = c("REF_AREA", "TIME_PERIOD")
+  )
+
 
 ```
 
