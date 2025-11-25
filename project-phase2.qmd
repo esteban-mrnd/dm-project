@@ -83,19 +83,40 @@ df <- df_final|>
     values_from = OBS_VALUE
   )
 
-df|>
+df <- df |>
   rename(
-   green_patents = `Technologies liées à l'environment` ,
-   total_patents = `Total des brevets`
+    green_patents = `Technologies liées à l'environment`,
+    total_patents = `Total des brevets`
   )
 
 
-
-df_final |>
+df<- df |>
   left_join(
     gdp_regions |> select(REF_AREA, TIME_PERIOD, OBS_VALUE),
     by = c("REF_AREA", "TIME_PERIOD")
-  )
+  ) |>
+  rename(gdp_region=OBS_VALUE)
+
+df<- df |>
+  left_join(
+    health_risks|> select(REF_AREA, TIME_PERIOD, OBS_VALUE),
+    by = c("REF_AREA", "TIME_PERIOD")
+  ) |>
+  rename(pollution_expos=OBS_VALUE)
+
+df<- df |>
+  left_join(
+    heat_stress|> select(REF_AREA, TIME_PERIOD, OBS_VALUE),
+    by = c("REF_AREA", "TIME_PERIOD")
+  ) |>
+  rename(heat_stress=OBS_VALUE)
+
+df<- df |>
+  left_join(
+    precipitation|> select(REF_AREA, TIME_PERIOD, OBS_VALUE),
+    by = c("REF_AREA", "TIME_PERIOD")
+  ) |>
+  rename(precipitation=OBS_VALUE)
 
 
 ```
