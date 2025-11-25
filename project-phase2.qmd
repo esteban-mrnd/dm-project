@@ -4,3 +4,61 @@ author: "Louise Cazalet and Esteban Marianadin"
 format: html
 editor: visual
 ---
+
+# Project Title
+
+#### Louise Cazalet-Dance & Esteban Marianadin
+
+**Link to our Github project :** https://github.com/esteban-mrnd/dm-project.git
+
+
+
+### Links to the data sources
+
+All the following links include the filters we used to get the data for our analysis.
+
+rajouter les liens
+
+
+
+### Short description of the project 
+
+
+
+
+
+
+
+### Data Description
+
+
+```{r}
+library(vroom)
+library(here)
+here::i_am("dm-project.Rproj")
+```
+
+
+
+```{r}
+patents <- vroom(here("data","patents.csv"))
+gdp_regions <- vroom(here("data","gdp_regions.csv"))
+precipitation <- vroom(here("data","extreme_precipitations.csv"))
+health_risks <- vroom(here("data","health_risks.csv"))
+heat_stress <- vroom(here("data","heat_stress.csv"))
+wildfires <- vroom(here("data","wildfires.csv"))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
