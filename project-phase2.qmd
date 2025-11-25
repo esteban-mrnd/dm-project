@@ -23,7 +23,7 @@ on peut réorganiser pour faire variable par variable ?
 
 ### Short description of the project
 
-### Data Description
+### Data Import
 
 ```{r}
 library(vroom)
@@ -40,30 +40,44 @@ precipitation <- vroom(here("data","extreme_precipitations.csv"))
 health_risks <- vroom(here("data","health_risks.csv"))
 heat_stress <- vroom(here("data","heat_stress.csv"))
 wildfires <- vroom(here("data","wildfires.csv"))
+rd_exp_country <- vroom(here("data","rd-exp-country.csv"))
+
 ```
 
-#### Description
+### Data description
 
 ```{r}
 summarize_data <- function(df) {
   df |> summarize(
     `Number of lines` = n(),
-    `Number of columns` = ncol(df)
+    `Number of columns` = ncol(df),
+    start_year = min(df[["TIME_PERIOD"]], na.rm = TRUE),
+    end_year   = max(df[["TIME_PERIOD"]], na.rm = TRUE)
   )
 }
 
 
 summarize_data(patents)
-
+summarize_data(gdp_regions)
+summarize_data(precipitation)
+summarize_data(health_risks)
+summarize_data(heat_stress)
+summarize_data(wildfires)
 ```
 
+
+### Key Variable : share of green patent
 
 
 ```{r}
-summarize_data(patents)
-summarize_data(patents)
 
 ```
+
+
+
+
+
+
 
 
 
