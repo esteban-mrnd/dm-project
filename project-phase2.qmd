@@ -29,6 +29,7 @@ on peut réorganiser pour faire variable par variable ?
 library(vroom)
 library(here)
 library(dplyr)
+library(tidyr)
 library
 here::i_am("dm-project.Rproj")
 ```
@@ -69,7 +70,21 @@ summarize_data(wildfires)
 ### Key Variable : share of green patent
 
 
+#### Clean patents and create final database
+
 ```{r}
+df_final <- patents |>
+  select(REF_AREA,`Zone de référence`, TIME_PERIOD, COUNTRY, Pays, OBS_VALUE, `Sélection de domaines technologiques de l'OCDE`)
+
+
+df <- df_final|>
+  pivot_wider(
+    names_from = `Sélection de domaines technologiques de l'OCDE`,
+    values_from = OBS_VALUE
+  )
+
+
+df_complete <- df 
 
 ```
 
