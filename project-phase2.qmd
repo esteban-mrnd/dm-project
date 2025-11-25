@@ -118,6 +118,13 @@ df<- df |>
   ) |>
   rename(precipitation=OBS_VALUE)
 
+df<- df |>
+  left_join(
+    wildfires|> select(REF_AREA, TIME_PERIOD, OBS_VALUE),
+    by = c("REF_AREA", "TIME_PERIOD")
+  ) |>
+  rename(wildfire=OBS_VALUE)
+
 
 ```
 
