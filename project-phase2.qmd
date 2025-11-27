@@ -15,7 +15,19 @@ editor: visual
 
 All the following links include the filters we used to get the data for our analysis.
 
-rajouter les liens
+- **Total and green patents** : https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=0&snb=315&vw=tb&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_PAT%40DF_PAT&df[ag]=OECD.CFE.EDS&df[vs]=1.0&dq=A.TL2....APPLICATION.PAT.._T%2BENV.PATN&pd=1995%2C2022&to[TIME_PERIOD]=false
+
+- **Wildfires** : https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=0&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_CLIM%40DF_FIRES&df[ag]=OECD.CFE.EDS&df[vs]=2.4&dq=A.TL2...FIRE.....PT_AR&pd=2000%2C2023&to[TIME_PERIOD]=false&vw=tb
+
+- **Heat stress** :  https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=20&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_ECO%40DF_GDP&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.TL2...GDP..Q.USD_PPP_PS&pd=1995%2C2023&to[TIME_PERIOD]=false
+
+- **GDP per capita per regions** : https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=20&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_ECO%40DF_GDP&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.TL2...GDP..Q.USD_PPP_PS&pd=1995%2C2023&to[TIME_PERIOD]=false
+
+- **Health risks** : https://data-explorer.oecd.org/vis?lc=en&tm=regions&pg=20&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_HEALTH%40DF_RISK&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A....PM25_POP_EXP...&to[TIME_PERIOD]=false&pd=1995%2C2020
+
+- **GDP** : https://data.worldbank.org/indicator/NY.GDP.MKTP.CD
+
+- **R&D expenditures** : https://data.worldbank.org/indicator/GB.XPD.RSDV.GD.ZS
 
 ### Description of the sources (?)
 
@@ -66,18 +78,16 @@ summarize_data(heat_stress)
 summarize_data(wildfires)
 ```
 
-
 ### Key Variable : share of green patent
-
 
 #### Clean patents and create final database
 
 ```{r}
-df_final <- patents |>
+df <- patents |>
   select(REF_AREA,`Zone de référence`, TIME_PERIOD, COUNTRY, Pays, OBS_VALUE, `Sélection de domaines technologiques de l'OCDE`)
 
 
-df <- df_final|>
+df <- df|>
   pivot_wider(
     names_from = `Sélection de domaines technologiques de l'OCDE`,
     values_from = OBS_VALUE
@@ -88,7 +98,6 @@ df <- df |>
     green_patents = `Technologies liées à l'environment`,
     total_patents = `Total des brevets`
   )
-
 
 df<- df |>
   left_join(
@@ -127,14 +136,3 @@ df<- df |>
 
 
 ```
-
-
-
-
-
-
-
-
-
-
-
