@@ -1,29 +1,36 @@
 ---
-title: "DM Project"
+title: "Assessing climate risks impact on green technology innovation"
 author: "Louise Cazalet and Esteban Marianadin"
 format: html
 editor: visual
 ---
 
-# Project Title
-
-#### Louise Cazalet-Dance & Esteban Marianadin
-
 **Link to our Github project :** https://github.com/esteban-mrnd/dm-project.git
 
-### Links to the data sources
+## Research Question
+
+dire ce que c'est regions/TL2
+
+## Description and links of the sources
 
 All the following links include the filters we used to get the data for our analysis.
 
 - **Total and green patents** : https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=0&snb=315&vw=tb&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_PAT%40DF_PAT&df[ag]=OECD.CFE.EDS&df[vs]=1.0&dq=A.TL2....APPLICATION.PAT.._T%2BENV.PATN&pd=1995%2C2022&to[TIME_PERIOD]=false
 
+This OECD dataset provides statistics on patents applications for large regions (TL2). It includes all international patent applications filed under the Patent Cooperation Treaty (PCT) with the World Intellectual Property Organization (WIPO). 
+
+
 - **Wildfires** : https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=0&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_CLIM%40DF_FIRES&df[ag]=OECD.CFE.EDS&df[vs]=2.4&dq=A.TL2...FIRE.....PT_AR&pd=2000%2C2023&to[TIME_PERIOD]=false&vw=tb
+
+This OECD dataset provides indicators on exposure to wildfires in large regions. This indicator is derive from the European Joint Research Centre Global wildfire dataset, which captures fire activity and behaviour.It is measured as the percentage of the region's area exposed to wildfire. 
 
 - **Heat stress** :  https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=20&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_ECO%40DF_GDP&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.TL2...GDP..Q.USD_PPP_PS&pd=1995%2C2023&to[TIME_PERIOD]=false
 
 - **GDP per capita per regions** : https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=20&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_ECO%40DF_GDP&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.TL2...GDP..Q.USD_PPP_PS&pd=1995%2C2023&to[TIME_PERIOD]=false
 
 - **Health risks** : https://data-explorer.oecd.org/vis?lc=en&tm=regions&pg=20&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_HEALTH%40DF_RISK&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A....PM25_POP_EXP...&to[TIME_PERIOD]=false&pd=1995%2C2020
+
+All of theses datasets come from the OECD website
 
 - **GDP** : https://data.worldbank.org/indicator/NY.GDP.MKTP.CD
 
@@ -42,7 +49,6 @@ library(vroom)
 library(here)
 library(dplyr)
 library(tidyr)
-library
 here::i_am("dm-project.Rproj")
 ```
 
