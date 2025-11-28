@@ -41,10 +41,6 @@ This OECD dataset provides statistics on health risks for large regions (TL2). F
 
 This World Bank dataset provides statistics on gross domestic expenditure on research and development (R&D) as a percentage of GDP. It includes both capital and current expenditures in the business, government, higher education, and private non-profit sectors. R&D covers basic research, applied research, and experimental development. The data are compiled by the UNESCO Institute for Statistics (UIS) and are available annually. The unit of measure is the percentage of GDP.
 
-### Description of the sources (?)
-
-on peut réorganiser pour faire variable par variable ?
-
 ### Short description of the project
 
 ### Data Import
@@ -65,6 +61,42 @@ health_risks <- vroom(here("data","health_risks.csv"))
 heat_stress <- vroom(here("data","heat_stress.csv"))
 wildfires <- vroom(here("data","wildfires.csv"))
 rd_exp_country <- vroom(here("data","rd-exp-country.csv"))
+
+```
+
+```{r}
+rd_exp_country <- as.data.frame(rd_exp_country)
+
+library(dplyr)
+library(tidyr)
+
+# Supposons que ton df s'appelle rd_exp_raw
+# 1️⃣ Garder seulement les lignes de données (à partir de la ligne 4)
+rd_exp_clean <- rd_exp_country[4:nrow(rd_exp_country), ]
+
+# 2️⃣ Renommer les colonnes
+colnames(rd_exp_clean)[1:4] <- c("CountryName", "CountryCode", "IndicatorName", "IndicatorCode")
+
+# 3️⃣ Convertir les colonnes années en format long
+rd_long <- rd_exp_clean %>%
+  pivot_longer(
+    cols = 5:ncol(rd_exp_clean),  # colonnes des années
+    names_to = "Year",
+    values_to = "R&D_expenditure"
+  ) %>%
+  mutate(
+    Year = as.integer(as.numeric(Year))  # enlever .0000000
+  )
+
+# 4️⃣ Maintenant rd_long est prêt pour merge
+
+regional_df <- regional_df %>%
+  rename(CountryCode = Country, Year = <colonne_année>) %>%
+  mutate(Year = as.integer(Year))
+
+merged_df <- regional_df %>%
+  left_join(rd_long, by = c("CountryCode", "Year"))
+
 
 ```
 
