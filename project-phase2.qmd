@@ -22,19 +22,24 @@ This OECD dataset provides statistics on patents applications for large regions 
 
 - **Wildfires** : https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=0&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_CLIM%40DF_FIRES&df[ag]=OECD.CFE.EDS&df[vs]=2.4&dq=A.TL2...FIRE.....PT_AR&pd=2000%2C2023&to[TIME_PERIOD]=false&vw=tb
 
-This OECD dataset provides indicators on exposure to wildfires in large regions. This indicator is derive from the European Joint Research Centre Global wildfire dataset, which captures fire activity and behaviour.It is measured as the percentage of the region's area exposed to wildfire. 
+This dataset provides indicators on exposure to wildfires in large regions. According to the OECD, this indicator is derived from the European Joint Research Centre Global wildfire dataset, which captures fire activity and behaviour.It is measured as the percentage of the region's area exposed to wildfire. 
 
-- **Heat stress** :  https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=20&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_ECO%40DF_GDP&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.TL2...GDP..Q.USD_PPP_PS&pd=1995%2C2023&to[TIME_PERIOD]=false
+- **Heat stress** :  https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=20&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_CLIM%40DF_HEAT_STRESS&df[ag]=OECD.CFE.EDS&df[vs]=2.4&dq=A.TL2...UTCI_POP_EXP..GE38...&pd=1981%2C2024&to[TIME_PERIOD]=false
+
+This dataset provides statistics on population exposure to heat stress in large regions. According to the OECD, heat stress is estimated using the Universal Thermal Comfort Index (UTCI). The UTCI enables to assess the impact of atmospheric conditions on the human body by considering air temperature, wind, radiation and humidity. UTCI values from 32°C to 38°C are considered as strong heat stress, from 38°C to 46°C as very strong heat stress, and above 46°C as extreme heat stress. Population exposure to heat stress was computed using the hourly thermal comfort indices grids from the Copernicus Climate Data Store.For this project, we choose to take the number of days in a given year during which a region experienced temperatures exceeding 38°C.
+
 
 - **GDP per capita per regions** : https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=20&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_ECO%40DF_GDP&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.TL2...GDP..Q.USD_PPP_PS&pd=1995%2C2023&to[TIME_PERIOD]=false
 
+This dataset provides information on gross domestic product (GDP) per capita for large  regions. Data are collected at current prices (in millions of national currency) from Eurostat for EU countries, from OECD Working Party on Territorial Indicators (WPTI) delegates, and from national statistical offices. To ensure comparability over time and across countries, GDP values are converted into constant prices and purchasing power parity (PPP). It is calculated by dividing regional GDP by the region’s average annual population. and is expressed in US dollars per person.
+
 - **Health risks** : https://data-explorer.oecd.org/vis?lc=en&tm=regions&pg=20&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_HEALTH%40DF_RISK&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A....PM25_POP_EXP...&to[TIME_PERIOD]=false&pd=1995%2C2020
 
-All of theses datasets come from the OECD website
-
-- **GDP** : https://data.worldbank.org/indicator/NY.GDP.MKTP.CD
+This OECD dataset provides statistics on health risks for large regions (TL2). For this project, we focus on population exposure to fine particulate matter (PM2.5) as an indicator of air pollution. PM2.5 exposure represents the population-weighted average concentration of fine particulate matter with a diameter of 2.5 microns or less. These indicators are computed using geospatial data from the Global Burden of Disease (GBD) 2019 project.
 
 - **R&D expenditures** : https://data.worldbank.org/indicator/GB.XPD.RSDV.GD.ZS
+
+This World Bank dataset provides statistics on gross domestic expenditure on research and development (R&D) as a percentage of GDP. It includes both capital and current expenditures in the business, government, higher education, and private non-profit sectors. R&D covers basic research, applied research, and experimental development. The data are compiled by the UNESCO Institute for Statistics (UIS) and are available annually. The unit of measure is the percentage of GDP.
 
 ### Description of the sources (?)
 
