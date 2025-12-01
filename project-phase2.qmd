@@ -64,41 +64,35 @@ rd_exp_country <- vroom(here("data","rd-exp-country.csv"))
 
 ```
 
+
 ```{r}
-rd_exp_country <- as.data.frame(rd_exp_country)
+rd_exp_country <- vroom(here("data","rd-exp-country.csv"),)
 
-library(dplyr)
-library(tidyr)
+# extraire la 4e ligne comme futur nom de colonnes
+new_names <- as.character(rd_exp_country[3, ])
 
-# Supposons que ton df s'appelle rd_exp_raw
-# 1️⃣ Garder seulement les lignes de données (à partir de la ligne 4)
-rd_exp_clean <- rd_exp_country[4:nrow(rd_exp_country), ]
+# appliquer les noms
+colnames(rd_exp_country) <- new_names
 
-# 2️⃣ Renommer les colonnes
-colnames(rd_exp_clean)[1:4] <- c("CountryName", "CountryCode", "IndicatorName", "IndicatorCode")
+# supprimer les lignes inutiles
+rd_exp_country <- rd_exp_country[-3, ]
+rd_exp_country <- rd_exp_country[-2, ]
+rd_exp_country <- rd_exp_country[-1, ]
 
-# 3️⃣ Convertir les colonnes années en format long
-rd_long <- rd_exp_clean %>%
+# supprimer les colonnes inutiles
+rd_exp_country <- rd_exp_country[, -c(3:44)]
+
+
+rd_long <- rd_exp_country |>
   pivot_longer(
-    cols = 5:ncol(rd_exp_clean),  # colonnes des années
-    names_to = "Year",
-    values_to = "R&D_expenditure"
-  ) %>%
-  mutate(
-    Year = as.integer(as.numeric(Year))  # enlever .0000000
+    cols = `2000`:`2024`,     # adapter à ta dernière année
+    names_to = "year",
+    values_to = "value"
   )
-
-# 4️⃣ Maintenant rd_long est prêt pour merge
-
-regional_df <- regional_df %>%
-  rename(CountryCode = Country, Year = <colonne_année>) %>%
-  mutate(Year = as.integer(Year))
-
-merged_df <- regional_df %>%
-  left_join(rd_long, by = c("CountryCode", "Year"))
-
-
+rd_long <- rd_long |>
+  mutate(year = as.numeric(year))
 ```
+
 
 ### Data description
 
@@ -178,4 +172,24 @@ df<- df |>
   rename(wildfire=OBS_VALUE)
 
 
+df <- df |>
+  left_join(
+    rd_long |> select(`Country Code`, year, value),
+    by = c("COUNTRY" = "Country Code",
+           "TIME_PERIOD" = "year")
+  ) |>
+  rename(rd = value)
+
+
 ```
+
+
+```{r}
+df_clean <- df[complete.cases(df), ]
+summary(df_clean)
+```
+
+
+
+
+
