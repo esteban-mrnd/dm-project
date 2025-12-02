@@ -68,7 +68,7 @@ rd_exp_country <- vroom(here("data","rd-exp-country.csv"))
 ```{r}
 rd_exp_country <- vroom(here("data","rd-exp-country.csv"),)
 
-# extraire la 4e ligne comme futur nom de colonnes
+# extraire la 3e ligne comme futur nom de colonnes
 new_names <- as.character(rd_exp_country[3, ])
 
 # appliquer les noms
@@ -85,12 +85,12 @@ rd_exp_country <- rd_exp_country[, -c(3:44)]
 
 rd_long <- rd_exp_country |>
   pivot_longer(
-    cols = `2000`:`2024`,     # adapter à ta dernière année
-    names_to = "year",
+    cols = `2000`:`2024`,
+    names_to = "TIME_PERIOD",
     values_to = "value"
   )
 rd_long <- rd_long |>
-  mutate(year = as.numeric(year))
+  mutate(TIME_PERIOD = as.numeric(TIME_PERIOD))
 ```
 
 
@@ -113,6 +113,7 @@ summarize_data(precipitation)
 summarize_data(health_risks)
 summarize_data(heat_stress)
 summarize_data(wildfires)
+summarize_data(rd_long)
 ```
 
 ### Key Variable : share of green patent
