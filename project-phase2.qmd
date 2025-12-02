@@ -7,11 +7,8 @@ editor: visual
 
 **Link to our Github project :** https://github.com/esteban-mrnd/dm-project.git
 
-## Research Question
 
-dire ce que c'est regions/TL2
-
-## Description and links of the sources
+### Description and links of the sources
 
 All the following links include the filters we used to get the data for our analysis.
 
@@ -61,25 +58,17 @@ health_risks <- vroom(here("data","health_risks.csv"))
 heat_stress <- vroom(here("data","heat_stress.csv"))
 wildfires <- vroom(here("data","wildfires.csv"))
 rd_exp_country <- vroom(here("data","rd-exp-country.csv"))
-
 ```
 
 
 ```{r}
-rd_exp_country <- vroom(here("data","rd-exp-country.csv"),)
 
-# extraire la 3e ligne comme futur nom de colonnes
-new_names <- as.character(rd_exp_country[3, ])
+### Preliminary data cleaning of R&D expenditure
 
-# appliquer les noms
-colnames(rd_exp_country) <- new_names
+colnames(rd_exp_country) <- as.character(rd_exp_country[3, ])
 
-# supprimer les lignes inutiles
-rd_exp_country <- rd_exp_country[-3, ]
-rd_exp_country <- rd_exp_country[-2, ]
-rd_exp_country <- rd_exp_country[-1, ]
 
-# supprimer les colonnes inutiles
+rd_exp_country <- rd_exp_country[-c(1:3), ]
 rd_exp_country <- rd_exp_country[, -c(3:44)]
 
 
@@ -116,9 +105,8 @@ summarize_data(wildfires)
 summarize_data(rd_long)
 ```
 
-### Key Variable : share of green patent
 
-#### Clean patents and create final database
+### Clean patents and create final database
 
 ```{r}
 df <- patents |>
@@ -175,9 +163,9 @@ df<- df |>
 
 df <- df |>
   left_join(
-    rd_long |> select(`Country Code`, year, value),
+    rd_long |> select(`Country Code`, TIME_PERIOD, value),
     by = c("COUNTRY" = "Country Code",
-           "TIME_PERIOD" = "year")
+           "TIME_PERIOD")
   ) |>
   rename(rd = value)
 
@@ -186,9 +174,38 @@ df <- df |>
 
 
 ```{r}
-df_clean <- df[complete.cases(df), ]
-summary(df_clean)
+df <- df[complete.cases(df), ]
 ```
+
+
+
+
+### Description of the data cleaning and joining process : 
+
+The OECD data-extraction interface allowed us to apply most of the necessary filters before downloading the datasets. For all climate-related indicators (wildfires, heat stress, precipitation and pollution), we selected directly on the website the appropriate measurement units, spatial level (TL2 regions) and variable definitions.
+
+In contrast, the World Bank R&D dataset came in a non-tidy structure and required more work. We reconstructed proper column names from the third row, removed repeated header lines and unused columns, and reshaped the file into a long format (rd_long) to obtain one row per country–year. This ensured consistency with the OECD time-series structure
+
+We then build a main working dataset from the OECD patent file which is our main variable. From patents, we keep only identification variables (region code REF_AREA, country code COUNTRY, patent labels) and time (TIME_PERIOD), plus the patent counts. We reshape these patent counts from long to wide with pivot_wider() on patent labels, so that total patents and green patents become separate columns. We rename them to total_patents and green_patents for clarity.
+
+Next, we progressively enrich this patent panel by merging in the other regional indicators with a series of left_join() operations keyed on REF_AREA and TIME_PERIOD: regional GDP per capita, air pollution exposure, heat stress, extreme precipitations, and wildfire exposure. Finally, we bring in national R&D expenditures from the World Bank by joining rd_long on the country code and the year, this allowed to have for each region-year observation the associated country level R&D expenditure.
+
+As a last step, we restrict the analysis to complete observations by keeping only rows with no missing values across all variables. This yields a harmonised panel where each row corresponds to a TL2 region–year with consistent information on patenting activity, climate-related risks, air pollution, GDP per capita and national R&D effort.
+
+
+
+### Key Variable : share of green patent
+
+Finally we can compute our key variable : the share of green patents in total patents.
+
+```{r}
+df <- mutate(df, .after=total_patents, green_share=green_patents/total_patents)
+```
+
+
+### Description of the research question
+
+Explain what is TL2
 
 
 
