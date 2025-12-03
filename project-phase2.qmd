@@ -238,6 +238,22 @@ ggplot(df_subset, aes(x = TIME_PERIOD, y = green_share, color = `Zone de référ
 
 ### Description of the research question
 
+https://fr.euronews.com/my-europe/2025/08/28/feux-de-foret-une-annee-noire-pour-leurope?utm.com
+https://wmo.int/news/media-centre/wmo-confirms-2024-warmest-year-record-about-155degc-above-pre-industrial-level 
+
+In 2025, over one million hectares were burned across the EU, forests were destroyed by different climates risks such as extreme heat or wildfires. This area is four times larger than that of last year. At the global level, 2024 was the warmest year on record, with temperatures about 1.55°C above pre-industrial levels, surpassing a critical threshold. Each year, climate risks reach new extremes, from record-high temperatures to unprecedented wildfires. 
+
+Nowadays, one way we respond to major challenges is through technology. Growth and progress increasingly depend on technological solutions. When it comes to climate risks, we also depend on technology. For example, innovations in solar and wind energy or energy-efficient buildings show how technology can directly mitigate climate risks. These innovations are often captured in green patents.
+
+This brings us to our research question: Is there a link between exposure to climate risks and the intensity of green innovation? Are scientists in regions more affected by climate risks developing more green technologies? Understanding these relationships could provide valuable insight into how innovation is responding to environmental pressures and whether policy support is effectively targeted.
+
+To address these questions, we focus on TL2 regions, which are large subnational areas defined by the OECD. We study regions rather than entire countries because different areas within the same country can face very different types and levels of climate risks. Analyzing at the regional level allows for a more precise study by capturing both geographic and economic variation within countries.
+
+For our study, we use panel data that combines the number of green and total patents with climate risk indicators, including exposure to heat stress, wildfires, extreme precipitation, and air pollution. We also include control variables such as regional GDP per capita and national-level R&D expenditures.
+By bringing these datasets together, we can explore whether regions facing higher climate risks are also more active in developing green technologies, and how economic conditions and policy factors influence this relationship.
+
+
+
 Explain what is TL2 
 
 
