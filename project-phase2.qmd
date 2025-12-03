@@ -47,6 +47,8 @@ library(vroom)
 library(here)
 library(dplyr)
 library(tidyr)
+library(ggplot2)
+library(scales)
 here::i_am("dm-project.Rproj")
 ```
 
@@ -202,10 +204,41 @@ Finally we can compute our key variable : the share of green patents in total pa
 df <- mutate(df, .after=total_patents, green_share=green_patents/total_patents)
 ```
 
+The graph below illustrates this variable. Since we are working with panel data, displaying all regions can make the visualization confusing. To keep it clear, we show the evolution of green patent shares for four randomly selected regions: Nord-Est, Guadeloupe, Slovaquie de l'Est, and Flevoland.
+
+```{r}
+
+selected_regions <- c("Nord-Est", "Guadeloupe", "Slovaquie de l'Est", "Flevoland")
+
+df_subset <- df %>%
+  filter(`Zone de référence` %in% selected_regions)
+
+ggplot(df_subset, aes(x = TIME_PERIOD, y = green_share, color = `Zone de référence`, group = `Zone de référence`)) +
+  geom_line(size = 0.7) +   
+  scale_y_continuous(labels = percent_format(accuracy = 1)) +
+  scale_color_manual(values = c(
+    "Nord-Est"          = "#1b9e77",
+    "Guadeloupe"        = "#d95f02",
+    "Slovaquie de l'Est"= "#7570b3",
+    "Flevoland"         = "#e7298a"
+  )) +
+  labs(
+    title = "Evolution of the share of green patents per regions",
+    x = "Year",
+    y = "Share of green patents",
+    color = "Region"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+```
+
 
 ### Description of the research question
 
-Explain what is TL2
+Explain what is TL2 
 
 
 
