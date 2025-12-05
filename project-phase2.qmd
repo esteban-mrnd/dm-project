@@ -3,44 +3,54 @@ title: "Assessing climate risks impact on green technology innovation"
 author: "Louise Cazalet and Esteban Marianadin"
 format: html
 editor: visual
+execute:
+  message: false
+  warning: false
 ---
 
 **Link to our Github project :** https://github.com/esteban-mrnd/dm-project.git
-
 
 ### Description and links of the sources
 
 All the following links include the filters we used to get the data for our analysis.
 
-- **Total and green patents** : https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=0&snb=315&vw=tb&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_PAT%40DF_PAT&df[ag]=OECD.CFE.EDS&df[vs]=1.0&dq=A.TL2....APPLICATION.PAT.._T%2BENV.PATN&pd=1995%2C2022&to[TIME_PERIOD]=false
+-   **Total and green patents** : https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=0&snb=315&vw=tb&df\[ds\]=dsDisseminateFinalDMZ&df\[id\]=DSD_REG_PAT%40DF_PAT&df\[ag\]=OECD.CFE.EDS&df\[vs\]=1.0&dq=A.TL2....APPLICATION.PAT..\_T%2BENV.PATN&pd=1995%2C2022&to\[TIME_PERIOD\]=false
 
-This OECD dataset provides statistics on patents applications for large regions (TL2). It includes all international patent applications filed under the Patent Cooperation Treaty (PCT) with the World Intellectual Property Organization (WIPO). 
+This OECD dataset provides statistics on patents applications for large regions (TL2). It includes all international patent applications filed under the Patent Cooperation Treaty (PCT) with the World Intellectual Property Organization (WIPO).
 
+-   **Wildfires** : https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=0&snb=315&df\[ds\]=dsDisseminateFinalDMZ&df\[id\]=DSD_REG_CLIM%40DF_FIRES&df\[ag\]=OECD.CFE.EDS&df\[vs\]=2.4&dq=A.TL2...FIRE.....PT_AR&pd=2000%2C2023&to\[TIME_PERIOD\]=false&vw=tb
 
-- **Wildfires** : https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=0&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_CLIM%40DF_FIRES&df[ag]=OECD.CFE.EDS&df[vs]=2.4&dq=A.TL2...FIRE.....PT_AR&pd=2000%2C2023&to[TIME_PERIOD]=false&vw=tb
+This dataset provides indicators on exposure to wildfires in large regions. According to the OECD, this indicator is derived from the European Joint Research Centre Global wildfire dataset, which captures fire activity and behaviour.It is measured as the percentage of the region's area exposed to wildfire.
 
-This dataset provides indicators on exposure to wildfires in large regions. According to the OECD, this indicator is derived from the European Joint Research Centre Global wildfire dataset, which captures fire activity and behaviour.It is measured as the percentage of the region's area exposed to wildfire. 
-
-- **Heat stress** :  https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=20&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_CLIM%40DF_HEAT_STRESS&df[ag]=OECD.CFE.EDS&df[vs]=2.4&dq=A.TL2...UTCI_POP_EXP..GE38...&pd=1981%2C2024&to[TIME_PERIOD]=false
+-   **Heat stress** : https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=20&snb=315&df\[ds\]=dsDisseminateFinalDMZ&df\[id\]=DSD_REG_CLIM%40DF_HEAT_STRESS&df\[ag\]=OECD.CFE.EDS&df\[vs\]=2.4&dq=A.TL2...UTCI_POP_EXP..GE38...&pd=1981%2C2024&to\[TIME_PERIOD\]=false
 
 This dataset provides statistics on population exposure to heat stress in large regions. According to the OECD, heat stress is estimated using the Universal Thermal Comfort Index (UTCI). The UTCI enables to assess the impact of atmospheric conditions on the human body by considering air temperature, wind, radiation and humidity. UTCI values from 32°C to 38°C are considered as strong heat stress, from 38°C to 46°C as very strong heat stress, and above 46°C as extreme heat stress. Population exposure to heat stress was computed using the hourly thermal comfort indices grids from the Copernicus Climate Data Store. For this project, we chose to take the number of days in a given year during which a region experienced temperatures exceeding 38°C.
 
+-   **GDP per capita per regions** : https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=20&snb=315&df\[ds\]=dsDisseminateFinalDMZ&df\[id\]=DSD_REG_ECO%40DF_GDP&df\[ag\]=OECD.CFE.EDS&df\[vs\]=2.0&dq=A.TL2...GDP..Q.USD_PPP_PS&pd=1995%2C2023&to\[TIME_PERIOD\]=false
 
-- **GDP per capita per regions** : https://data-explorer.oecd.org/vis?lc=en&tm=-%20regions&pg=20&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_ECO%40DF_GDP&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A.TL2...GDP..Q.USD_PPP_PS&pd=1995%2C2023&to[TIME_PERIOD]=false
+This dataset provides information on gross domestic product (GDP) per capita for large regions. Data are collected at current prices (in millions of national currency) from Eurostat for EU countries, from OECD Working Party on Territorial Indicators (WPTI) delegates, and from national statistical offices. To ensure comparability over time and across countries, GDP values are converted into constant prices and purchasing power parity (PPP). It is calculated by dividing regional GDP by the region’s average annual population. and is expressed in US dollars per person.
 
-This dataset provides information on gross domestic product (GDP) per capita for large  regions. Data are collected at current prices (in millions of national currency) from Eurostat for EU countries, from OECD Working Party on Territorial Indicators (WPTI) delegates, and from national statistical offices. To ensure comparability over time and across countries, GDP values are converted into constant prices and purchasing power parity (PPP). It is calculated by dividing regional GDP by the region’s average annual population. and is expressed in US dollars per person.
-
-- **Health risks** : https://data-explorer.oecd.org/vis?lc=en&tm=regions&pg=20&snb=315&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_REG_HEALTH%40DF_RISK&df[ag]=OECD.CFE.EDS&df[vs]=2.0&dq=A....PM25_POP_EXP...&to[TIME_PERIOD]=false&pd=1995%2C2020
+-   **Health risks** : https://data-explorer.oecd.org/vis?lc=en&tm=regions&pg=20&snb=315&df\[ds\]=dsDisseminateFinalDMZ&df\[id\]=DSD_REG_HEALTH%40DF_RISK&df\[ag\]=OECD.CFE.EDS&df\[vs\]=2.0&dq=A....PM25_POP_EXP...&to\[TIME_PERIOD\]=false&pd=1995%2C2020
 
 This OECD dataset provides statistics on health risks for large regions (TL2). For this project, we focus on population exposure to fine particulate matter (PM2.5) as an indicator of air pollution. PM2.5 exposure represents the population-weighted average concentration of fine particulate matter with a diameter of 2.5 microns or less. These indicators are computed using geospatial data from the Global Burden of Disease (GBD) 2019 project.
 
-- **R&D expenditures** : https://data.worldbank.org/indicator/GB.XPD.RSDV.GD.ZS
+-   **R&D expenditures** : https://data.worldbank.org/indicator/GB.XPD.RSDV.GD.ZS
 
 This World Bank dataset provides statistics on gross domestic expenditure on research and development (R&D) as a percentage of GDP. It includes both capital and current expenditures in the business, government, higher education, and private non-profit sectors. R&D covers basic research, applied research, and experimental development. The data are compiled by the UNESCO Institute for Statistics (UIS) and are available annually. The unit of measure is the percentage of GDP.
 
 ### Short description of the project
 
 ### Data Import
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  message = FALSE
+)
+
+
+```
+
 
 ```{r}
 library(vroom)
@@ -62,7 +72,6 @@ wildfires <- vroom(here("data","wildfires.csv"))
 rd_exp_country <- vroom(here("data","rd-exp-country.csv"))
 ```
 
-
 ```{r}
 
 ### Preliminary data cleaning of R&D expenditure
@@ -78,35 +87,34 @@ rd_long <- rd_exp_country |>
   pivot_longer(
     cols = `2000`:`2024`,
     names_to = "TIME_PERIOD",
-    values_to = "value"
+    values_to = "OBS_VALUE"
   )
 rd_long <- rd_long |>
   mutate(TIME_PERIOD = as.numeric(TIME_PERIOD))
 ```
-
 
 ### Data description
 
 ```{r}
 summarize_data <- function(df) {
   df |> summarize(
-    `Number of lines` = n(),
-    `Number of columns` = ncol(df),
-    start_year = min(df[["TIME_PERIOD"]], na.rm = TRUE),
-    end_year   = max(df[["TIME_PERIOD"]], na.rm = TRUE)
+    `Number of lines`    = n(),
+    `Number of columns`  = ncol(df),
+    `Missing observed values `  = sum(is.na(.data[["OBS_VALUE"]])),
+    start_year = min(.data[["TIME_PERIOD"]], na.rm = TRUE),
+    end_year   = max(.data[["TIME_PERIOD"]], na.rm = TRUE)
   )
 }
 
+knitr::kable(summarize_data(patents),        caption = "Patents dataset summary")
+knitr::kable(summarize_data(gdp_regions),    caption = "GDP by regions dataset summary")
+knitr::kable(summarize_data(precipitation),  caption = "Precipitation dataset summary")
+knitr::kable(summarize_data(health_risks),   caption = "Health risks dataset summary")
+knitr::kable(summarize_data(heat_stress),    caption = "Heat stress dataset summary")
+knitr::kable(summarize_data(wildfires),      caption = "Wildfires dataset summary")
+knitr::kable(summarize_data(rd_long),        caption = "R&D dataset summary")
 
-summarize_data(patents)
-summarize_data(gdp_regions)
-summarize_data(precipitation)
-summarize_data(health_risks)
-summarize_data(heat_stress)
-summarize_data(wildfires)
-summarize_data(rd_long)
 ```
-
 
 ### Clean patents and create final database
 
@@ -174,15 +182,12 @@ df <- df |>
 
 ```
 
-
 ```{r}
 df <- df[complete.cases(df), ]
 
 ```
 
-
-
-### Description of the data cleaning and joining process : 
+### Description of the data cleaning and joining process :
 
 The OECD data-extraction interface allowed us to apply most of the necessary filters before downloading the datasets. For all climate-related indicators (wildfires, heat stress, precipitation and pollution), we selected directly on the website the appropriate measurement units, spatial level (TL2 regions) and variable definitions.
 
@@ -193,7 +198,6 @@ We then build a main working dataset from the OECD patent file which is our main
 Next, we progressively enrich this patent panel by merging in the other regional indicators with a series of left_join() operations keyed on REF_AREA and TIME_PERIOD: regional GDP per capita, air pollution exposure, heat stress, extreme precipitations, and wildfire exposure. Finally, we bring in national R&D expenditures from the World Bank by joining rd_long on the country code and the year, this allowed to have for each region-year observation the associated country level R&D expenditure.
 
 As a last step, we restrict the analysis to complete observations by keeping only rows with no missing values across all variables. This yields a harmonised panel where each row corresponds to a TL2 region–year with consistent information on patenting activity, climate-related risks, air pollution, GDP per capita and national R&D effort.
-
 
 ### Key Variable : share of green patent
 
@@ -213,7 +217,7 @@ df_subset <- df %>%
   filter(`Zone de référence` %in% selected_regions)
 
 ggplot(df_subset, aes(x = TIME_PERIOD, y = green_share, color = `Zone de référence`, group = `Zone de référence`)) +
-  geom_line(size = 0.7) +   
+  geom_line(linewidth = 0.7) +   
   scale_y_continuous(labels = percent_format(accuracy = 1)) +
   scale_color_manual(values = c(
     "Nord-Est"          = "#1b9e77",
@@ -234,23 +238,25 @@ ggplot(df_subset, aes(x = TIME_PERIOD, y = green_share, color = `Zone de référ
 
 ```
 
+Another possible option is to use a histogram combined with a rug plot, which allows us to visualise the overall distribution of green_share while also displaying each individual observation independently of its region.
+
+```{r}
+ggplot(df, aes(x = green_share)) +
+  geom_histogram(binwidth = 0.01) +
+  geom_rug(alpha = 0.3)
+
+```
 
 ### Description of the research question
 
-https://fr.euronews.com/my-europe/2025/08/28/feux-de-foret-une-annee-noire-pour-leurope?utm.com
-https://wmo.int/news/media-centre/wmo-confirms-2024-warmest-year-record-about-155degc-above-pre-industrial-level 
+https://fr.euronews.com/my-europe/2025/08/28/feux-de-foret-une-annee-noire-pour-leurope?utm.com https://wmo.int/news/media-centre/wmo-confirms-2024-warmest-year-record-about-155degc-above-pre-industrial-level
 
 In 2025, over one million hectares of forest were burned across the EU due to extreme heat, drought, or wildfires. It is four times the area damaged in the EU in 2024. At an international level, 2024 was the hottest year ever recorded, with temperatures 1.55°C higher than before industrial times. Every year, climate risks get worse, with record heat and wildfires we have never seen before. These examples show that climate risks are becoming more urgent.
 
-Nowadays, technological innovation is one way to address such stakes. For example, growth and progress increasingly depend on technological solutions. When talking about climate risks, we can draw the same conclusion. Society relies heavily on technology. Innovations in green technologies, like solar and wind energy or energy-efficient buildings, provide  ways to reduce the impacts of extreme events. In this study, we will measure these innovations with the number of green patents.
+Nowadays, technological innovation is one way to address such stakes. For example, growth and progress increasingly depend on technological solutions. When talking about climate risks, we can draw the same conclusion. Society relies heavily on technology. Innovations in green technologies, like solar and wind energy or energy-efficient buildings, provide ways to reduce the impacts of extreme events. In this study, we will measure these innovations with the number of green patents.
 
-We will focus on TL2 regions to examine the relationship between climate risks and green technologies. These regions are large subnational areas defined by the OECD. We chose to work on regions rather than countries as different areas within the same country can experience very different levels and types of climate risks. So, studying data at this subnational level allows us to capture geographic and economic variation more precisely. 
+We will focus on TL2 regions to examine the relationship between climate risks and green technologies. These regions are large subnational areas defined by the OECD. We chose to work on regions rather than countries as different areas within the same country can experience very different levels and types of climate risks. So, studying data at this subnational level allows us to capture geographic and economic variation more precisely.
 
 For this study, we constructed a panel dataset that combines green and total patent counts for each region. We added some climate risk indicators, such that exposure to heat stress, wildfires, extreme precipitation, or air pollution. We will also rely on control variables like regional GDP per capita and national-level R&D expenditures. With these datasets, we will be able to explore whether regions facing higher climate risks are the ones that are more active in the development of green technologies.
 
 This approach will allow us to explore if the intensity of green innovation responds to potential environmental pressures. We will also examine if policy and economic contexts shape regional innovation trends.
-
-
-
-
-
