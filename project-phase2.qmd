@@ -173,11 +173,11 @@ df<- df |>
 
 df <- df |>
   left_join(
-    rd_long |> select(`Country Code`, TIME_PERIOD, value),
+    rd_long |> select(`Country Code`, TIME_PERIOD, OBS_VALUE),
     by = c("COUNTRY" = "Country Code",
            "TIME_PERIOD")
   ) |>
-  rename(rd = value)
+  rename(rd = OBS_VALUE)
 
 
 ```
